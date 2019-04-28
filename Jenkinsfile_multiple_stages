@@ -1,0 +1,25 @@
+pipeline {
+    //select the executor
+    agent any
+    //define the stages
+    stages {
+        //define the stage and provide the name in ()
+        stage ('Example') {
+            //define the steps
+            steps {
+                //commands
+                echo "Hello Class AWT02"
+            }
+        }
+        stage ('Example 2') {
+            steps {
+                sh 'ls -la'
+            }
+        }
+        stage ('Example 3') {
+            steps {
+                sh 'uname -a'
+            }
+        }
+    }
+}

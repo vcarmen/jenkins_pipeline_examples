@@ -1,0 +1,48 @@
+pipeline {
+    //select the executor
+    agent any
+    //define the stages
+    stages {
+        //define the stage and provide the name in ()
+        stage ('Example') {
+            //define the steps
+            steps {
+                //commands
+                echo "Hello Class AWT02"
+            }
+        }
+        stage ('Example 2') {
+            steps {
+                sh 'ls -la'
+            }
+        }
+        stage ('Example 3') {
+            steps {
+                sh 'uname -a'
+            }
+        }
+        stage ('Just for brach release') {
+            when {
+                branch 'release'
+            }
+            steps {
+                echo 'This is going to be executed just for release branch'
+            }
+        }
+        
+    }
+    // post task
+    post {
+        //conditions, there are several conditions
+        always {
+            echo 'Execute Always message'
+        }
+        failure {
+            echo 'Execute when it fails'
+        }
+        success {
+            echo 'Execute when it success'
+        }
+    }
+}
+

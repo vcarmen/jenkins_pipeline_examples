@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        //https://jenkins.io/doc/pipeline/steps/workflow-scm-step/#code-checkout-code-general-scm
+        //https://gist.github.com/HarshadRanganathan/97feed7f91b7ae542c994393447f3db4
+        stage('Checkout external proj') {
+            steps {
+                git branch: 'master',
+                    credentialsId: '0036db37-293f-42a4-b593-14aa55d289db',
+                    url: 'git@github.com:vcarmen/myExample.git'
+    
+                sh "ls -lat"
+            }
+        }
+    
+        stage('Build') { 
+            steps {
+                // 
+                echo "Build"
+            }
+        }
+    }
+}
